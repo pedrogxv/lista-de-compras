@@ -1,0 +1,30 @@
+{
+    "listas": [
+        {
+            "id": 1,
+            "nome": "Lista de Teste"
+        }
+    ],
+    "lista_itens": [
+        {
+            "lista_id": 1,
+            "itens": [
+                {
+                    "item_id": 1,
+                    "quantidade": 20,
+                    "unidade": "u"
+                }
+            ]
+        }
+    ],
+    "itens": [
+        {
+            "id": 1,
+            "nome": "\uD83C\uDF4C Banana"
+        },
+        {
+            "id": 2,
+            "nome": "Maça"
+        }
+    ]
+}

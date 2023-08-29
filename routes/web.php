@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListaController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['splade'])->group(function () {
-    Route::get('/', fn () => view('home'))->name('home');
+    Route::resource('/home', HomeController::class)
+        ->only(['index', 'store']);
+    Route::resource('/lista', ListaController::class)
+        ->only(['show', 'store']);
+
+    Route::redirect("/", \route('home.index'));
+
     Route::get('/docs', fn () => view('docs'))->name('docs');
 
     // Registers routes to support the interactive components...
