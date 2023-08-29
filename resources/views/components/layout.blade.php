@@ -1,6 +1,8 @@
-<div class="m-5">
+<div>
+    <x-navigation />
+
     <!-- Page Content -->
-    <main class="">
+    <main class="m-3">
         {{ $slot }}
     </main>
 </div>
