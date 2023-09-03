@@ -49,7 +49,7 @@ abstract class JsonModel extends Model
         return $arr[array_key_first($arr)] ?? [];
     }
 
-    public function saveData(stdClass $object): bool
+    public function insertData(stdClass $object): object
     {
         $raw = $this->read();
 
@@ -68,8 +68,36 @@ abstract class JsonModel extends Model
             $json
         );
 
+        return $object;
+    }
+
+    public function updateData(int $id, array $dataToUpdate): bool
+    {
+        $json_file_path = "../database/" . $this->json_file;
+
+        // Lê o conteúdo original do arquivo JSON
+        $json_content = file_get_contents($json_file_path);
+
+        $raw = json_decode($json_content, true);
+
+        if (isset($raw[$this->getTableName()])) {
+            foreach ($raw[$this->getTableName()] as $key => &$object) {
+                if ($object['id'] === $id) {
+                    // Atualiza os campos do objeto com base nos dados fornecidos
+                    $object = array_merge($object, $dataToUpdate);
+                    break; // Termina o loop após a atualização
+                }
+            }
+        }
+
+        $json = json_encode($raw, JSON_PRETTY_PRINT);
+
+        // Escreve o JSON resultante de volta no arquivo
+        file_put_contents($json_file_path, $json);
+
         return true;
     }
+
 
     public function deleteData(int $id): bool
     {
@@ -82,7 +110,7 @@ abstract class JsonModel extends Model
 
         if (isset($raw[$this->getTableName()])) {
             foreach ($raw[$this->getTableName()] as $key => $object) {
-                if ($object['id'] === $id) {
+                if ($object['id'] == $id) {
                     unset($raw[$this->getTableName()][$key]);
                     // Reindexa as chaves numéricas (opcional)
                     $raw[$this->getTableName()] = array_values($raw[$this->getTableName()]);

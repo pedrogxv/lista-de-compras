@@ -6,24 +6,33 @@ use App\Models\Item;
 use App\Models\Lista;
 use App\Models\ListaItem;
 use Illuminate\Http\Request;
+use ProtoneMedia\Splade\Facades\Toast;
+use stdClass;
 
 class ListaController extends Controller
 {
+    public function create()
+    {
+        return view('lista.create');
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => ['required'],
-            'criada_em' => ['required', 'date'],
-            'atualizada_em' => ['required', 'date'],
-            'deletada' => ['required'],
-        ]);
+        $model = new Lista();
+        $lista = new stdClass();
+        $lista->nome = $request->get('nome');
+        $lista = $model->insertData($lista);
 
-        return Lista::create($request->validated());
+        Toast::success('Lista criada com sucesso!');
+
+        return redirect(
+            route('lista.show', $lista->id)
+        );
     }
 
     public function show($id)
     {
-        $lista = (new Lista())->getById($id)[0];
+        $lista = (new Lista())->getFirst($id);
 
         $itens = (new Item())->allFromJson();
         $listaItens = (new ListaItem())
@@ -52,10 +61,23 @@ class ListaController extends Controller
         return $lista;
     }
 
-    public function destroy(Lista $lista)
+    public function destroy($id)
     {
-        $lista->delete();
+        $model = new Lista();
+        $li_model = new ListaItem();
 
-        return response()->json();
+        $lis = $li_model->whereLike('lista_id', $id);
+
+        foreach ($lis as $li) {
+            $li_model->deleteData($li['id']);
+        }
+
+        $model->deleteData($id);
+
+        Toast::success("Lista removida com sucesso!");
+
+        return redirect(
+            route('home.index')
+        );
     }
 }

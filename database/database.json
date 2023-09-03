@@ -3,15 +3,26 @@
         {
             "id": "2",
             "nome": "Lista de Teste"
+        },
+        {
+            "nome": "gege",
+            "id": 4
         }
     ],
     "lista_item": [
         {
             "lista_id": 2,
             "item_id": "1",
-            "quantidade": "2",
+            "quantidade": 3,
             "unidade": "u",
             "id": 1
+        },
+        {
+            "lista_id": 4,
+            "item_id": "2",
+            "quantidade": "22",
+            "unidade": "u",
+            "id": 2
         }
     ],
     "itens": [

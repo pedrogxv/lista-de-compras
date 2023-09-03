@@ -20,7 +20,7 @@ class ListaProdutoController extends Controller
             $lista->quantidade = $request->get('quantidade');
             $lista->unidade = $request->get('unidade');
 
-            (new ListaItem())->saveData($lista);
+            (new ListaItem())->insertData($lista);
 
             Toast::success("Produto adicionado com sucesso!");
         } catch (\Throwable $th) {
@@ -34,13 +34,28 @@ class ListaProdutoController extends Controller
     {
         $model = new ListaItem();
 
-        $item = $model->getById($id);
+        $item = $model->getFirst($id);
         $model->deleteData($id);
 
         Toast::success("Produto removido com sucesso!");
 
         return redirect(
-            route('lista.show', $item[0]['lista_id'])
+            route('lista.show', $item['lista_id'])
+        );
+    }
+
+    public function quantity(int $id, int $newQtd)
+    {
+        $model = new ListaItem();
+
+        $item = $model->getFirst($id);
+        $item['quantidade'] = $newQtd;
+        $model->updateData($id, $item);
+
+        Toast::success("Quantidade atualizada!");
+
+        return redirect(
+            route('lista.show', $item['lista_id'])
         );
     }
 }

@@ -41,11 +41,35 @@
     </div>
 
     <div class="m-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-        <x-card title="Crie uma lista!" redirect-url="/create" btn-text="Criar" class="border-green-600 dark:border-green-600" />
+        <Link href="#refund-info">
+            <x-card title="Crie uma lista!" btn-text="Criar" class="border-green-600 dark:border-green-600"
+            />
+        </Link>
+
         @foreach($listas as $lista)
             <x-card :title="$lista['nome']" :redirect-url="route('lista.show', $lista['id'])" btn-text="Acessar"/>
         @endforeach
     </div>
+
+    <x-splade-modal name="refund-info"
+                    max-width="lg"
+                    class="w-full p-4 border border-gray-200 bg-gray-50 rounded-xl dark:border-gray-600 dark:bg-gray-700"
+    >
+        <x-splade-form action="{{ route('lista.store') }}" method="POST">
+            <div class="mt-10">
+                <x-splade-input type="text"
+                       name="nome"
+                       id="nome" class=""
+                       placeholder="Nome da Lista" required
+                />
+            </div>
+            <div class="w-full mt-4">
+                <button type="submit" class="w-full text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                    Criar
+                </button>
+            </div>
+        </x-splade-form>
+    </x-splade-modal>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {

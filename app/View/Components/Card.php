@@ -8,8 +8,8 @@ use Illuminate\View\Component;
 class Card extends Component
 {
     public function __construct(
-        public string  $redirectUrl,
         public string  $title,
+        public ?string  $redirectUrl = null,
         public ?string $description = null,
         public string $btnText = 'Acessar',
         public string $class = '',

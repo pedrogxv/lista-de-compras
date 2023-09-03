@@ -1,7 +1,25 @@
 <x-layout>
     <div class="">
-        <div>
-            <x-buttons.back :url="route('home.index')" />
+        <div class="flex align-baseline">
+            <x-buttons.back :url="route('home.index')"/>
+            <form
+                action="{{ route('lista.destroy', $lista['id']) }}"
+                method="POST">
+                @csrf
+                @method('DELETE')
+                <button
+                    class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+                    <svg class="mx-2 w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
+                    </svg>
+                    <span
+                        class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    Deletar
+                </span>
+                </button>
+            </form>
         </div>
 
         <form
@@ -10,7 +28,8 @@
             class="mt-5 w-full p-4 flex flex-col border border-gray-200 bg-gray-50 rounded-xl dark:border-gray-600 dark:bg-gray-700">
             @csrf
             <div class="mb-3">
-                <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">
+                <span
+                    class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">
                     {{ $lista['nome'] }}
                 </span>
             </div>
@@ -76,25 +95,37 @@
                     <span class="mr-2 produto-quantidade">{{ $li['quantidade']}}</span>
                     <span class="produto-nome">{{ $item['nome']}}</span>
                     <div class="ms-auto flex items-center">
-                        <button type="button"
-                                class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                            <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
-                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M9 1v16M1 9h16"/>
-                            </svg>
-                            <span class="sr-only">Adicionar</span>
-                        </button>
-                        <button type="button"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
-                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M1 1h16"/>
-                            </svg>
-                            <span class="sr-only">Subtrair</span>
-                        </button>
-                        <form action="{{ route('lista-produto.destroy', $li['id']) }}" method="POST" >
+                        <form
+                            action="{{ route('lista-produto.quantity', ['id' => $li['id'], 'qtd' => $li['quantidade'] + 1]) }}"
+                            method="POST">
+                            @csrf
+                            <button type="submit"
+                                    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
+                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M9 1v16M1 9h16"/>
+                                </svg>
+                                <span class="sr-only">Adicionar</span>
+                            </button>
+                        </form>
+                        <form
+                            action="{{ route('lista-produto.quantity', ['id' => $li['id'], 'qtd' => $li['quantidade'] - 1]) }}"
+                            method="POST">
+                            @csrf
+                            <button type="submit"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
+                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M1 1h16"/>
+                                </svg>
+                                <span class="sr-only">Subtrair</span>
+                            </button>
+                        </form>
+                        <form action="{{ route('lista-produto.destroy', $li['id']) }}" method="POST">
                             @csrf
                             @method('DELETE')
 
@@ -102,7 +133,8 @@
                                     class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                                 <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
                                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"
                                           d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                                 </svg>
                                 <span class="sr-only">Remover</span>
