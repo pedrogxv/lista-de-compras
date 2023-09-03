@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+
 use App\Contracts\JsonModel;
 
-class Item extends JsonModel
+class ListaItem extends JsonModel
 {
     protected function getId(): string
     {
@@ -13,6 +14,6 @@ class Item extends JsonModel
 
     protected function getTableName(): string
     {
-        return 'itens';
+        return 'lista_item';
     }
 }

@@ -23,13 +23,15 @@ class ListaController extends Controller
 
     public function show($id)
     {
-        $lista = (new Lista())->getById($id);
+        $lista = (new Lista())->getById($id)[0];
+
         $itens = (new Item())->allFromJson();
-        $listaItens = (new ListaItem())->getItensByListaId($lista['id']);
+        $listaItens = (new ListaItem())
+            ->whereLike('lista_id', $id);
 
         // Filtrando itens que já estão na lista
-        $itensNome = array_column($listaItens, 'nome');
-        $itens = array_filter($itens, fn ($item) => !in_array($item['nome'], $itensNome));
+        $itensNome = array_column($listaItens, 'item_id');
+        $itens = array_filter($itens, fn ($item) => !in_array($item['id'], $itensNome));
 
         return view('lista.show', compact(
             'lista', 'itens', 'listaItens'

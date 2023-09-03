@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListaController;
+use App\Http\Controllers\ListaProdutoController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['splade'])->group(function () {
@@ -9,6 +10,11 @@ Route::middleware(['splade'])->group(function () {
         ->only(['index', 'store']);
     Route::resource('/lista', ListaController::class)
         ->only(['show', 'store']);
+
+    Route::post('/lista-produto/{id}', [ListaProdutoController::class, 'store'])
+        ->name('lista-produto.store');
+    Route::delete('/lista-produto/{id}', [ListaProdutoController::class, 'destroy'])
+        ->name('lista-produto.destroy');
 
     Route::redirect("/", \route('home.index'));
 

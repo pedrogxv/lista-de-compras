@@ -10,6 +10,5 @@
     </head>
     <body class="">
         @splade
-        @stack('script')
     </body>
 </html>
