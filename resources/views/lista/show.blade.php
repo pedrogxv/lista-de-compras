@@ -92,7 +92,8 @@
 
                 <div id="produto"
                      class="produto my-4 w-full flex items-center dark:text-white p-4 border border-gray-200 bg-gray-50 rounded-xl dark:border-gray-600 dark:bg-gray-700">
-                    <span class="mr-2 produto-quantidade">{{ $li['quantidade']}}</span>
+                    <span class="produto-quantidade">{{ $li['quantidade']}}</span>
+                    <span class="mr-2 produto-quantidade">{{ $li['unidade']}}</span>
                     <span class="produto-nome">{{ $item['nome']}}</span>
                     <div class="ms-auto flex items-center">
                         <form

@@ -23,6 +23,13 @@
             "quantidade": "22",
             "unidade": "u",
             "id": 2
+        },
+        {
+            "lista_id": 2,
+            "item_id": "2",
+            "quantidade": "2",
+            "unidade": "u",
+            "id": 3
         }
     ],
     "itens": [
