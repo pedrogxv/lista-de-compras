@@ -1,0 +1,45 @@
+{
+    "listas": [
+        {
+            "id": "2",
+            "nome": "Lista de Teste"
+        },
+        {
+            "nome": "gege",
+            "id": 4
+        }
+    ],
+    "lista_item": [
+        {
+            "lista_id": 2,
+            "item_id": "1",
+            "quantidade": 3,
+            "unidade": "u",
+            "id": 1
+        },
+        {
+            "lista_id": 4,
+            "item_id": "2",
+            "quantidade": "22",
+            "unidade": "u",
+            "id": 2
+        },
+        {
+            "lista_id": 2,
+            "item_id": "2",
+            "quantidade": "2",
+            "unidade": "u",
+            "id": 3
+        }
+    ],
+    "itens": [
+        {
+            "id": 1,
+            "nome": "\ud83c\udf4c Banana"
+        },
+        {
+            "id": 2,
+            "nome": "Ma\u00e7a"
+        }
+    ]
+}

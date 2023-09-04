@@ -1,9 +1,25 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListaController;
+use App\Http\Controllers\ListaProdutoController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['splade'])->group(function () {
-    Route::get('/', fn () => view('home'))->name('home');
+    Route::resource('/home', HomeController::class)
+        ->only(['index', 'store']);
+    Route::resource('/lista', ListaController::class)
+        ->only(['create', 'show', 'store', 'destroy']);
+
+    Route::post('/lista-produto/{id}', [ListaProdutoController::class, 'store'])
+        ->name('lista-produto.store');
+    Route::delete('/lista-produto/{id}', [ListaProdutoController::class, 'destroy'])
+        ->name('lista-produto.destroy');
+    Route::post('/lista-produto/{id}/qtd/{qtd}', [ListaProdutoController::class, 'quantity'])
+        ->name('lista-produto.quantity');
+
+    Route::redirect("/", \route('home.index'));
+
     Route::get('/docs', fn () => view('docs'))->name('docs');
 
     // Registers routes to support the interactive components...
