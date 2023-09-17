@@ -35,84 +35,203 @@
     "itens": [
         {
             "id": 1,
-            "nome": "🍌 Banana"
+            "nome": "\ud83c\udf4c Banana"
         },
         {
             "id": 2,
-            "nome": "🍎 Maçã"
+            "nome": "Ma\u00e7a"
         },
         {
             "id": 3,
-            "nome": "🍚 Arroz"
+            "nome": "\ud83c\udf55 Arroz"
         },
         {
             "id": 4,
-            "nome": "🍛 Feijão"
+            "nome": "\ud83c\udf54 Feijão"
         },
         {
             "id": 5,
-            "nome": "🥩 Carne"
+            "nome": "\ud83c\udf50 Carne"
         },
         {
             "id": 6,
-            "nome": "🍗 Frango"
+            "nome": "\ud83c\udf4d Frango"
         },
         {
             "id": 7,
-            "nome": "🐟 Peixe"
+            "nome": "\ud83c\udf49 Peixe"
         },
         {
             "id": 8,
-            "nome": "🥚 Ovos"
+            "nome": "\ud83c\udf56 Ovos"
         },
         {
             "id": 9,
-            "nome": "🥛 Leite"
+            "nome": "\ud83c\udf4e Leite"
         },
         {
             "id": 10,
-            "nome": "🧀 Queijo"
+            "nome": "\ud83c\udf53 Queijo"
         },
         {
             "id": 11,
-            "nome": "🍞 Pão"
+            "nome": "\ud83c\udf5c Pão"
         },
         {
             "id": 12,
-            "nome": "🧈 Manteiga"
+            "nome": "\ud83c\udf5e Manteiga"
         },
         {
             "id": 13,
-            "nome": "🥣 Cereais"
+            "nome": "\ud83c\udf68 Iogurte"
         },
         {
             "id": 14,
-            "nome": "🍝 Macarrão"
+            "nome": "\ud83c\udf67 Cereais"
         },
         {
             "id": 15,
-            "nome": "🍕 Pizza"
+            "nome": "\ud83c\udf57 Macarrão"
         },
         {
             "id": 16,
-            "nome": "🥔 Batata"
+            "nome": "\ud83c\udf59 Pizza"
         },
         {
             "id": 17,
-            "nome": "🧅 Cebola"
+            "nome": "\ud83c\udf5d Batata"
         },
         {
             "id": 18,
-            "nome": "🍅 Tomate"
+            "nome": "\ud83c\udf63 Cebola"
         },
         {
             "id": 19,
-            "nome": "🥦 Brócolis"
+            "nome": "\ud83c\udf52 Tomate"
         },
         {
             "id": 20,
-            "nome": "🍀 Espinafre"
+            "nome": "\ud83c\udf60 Brócolis"
+        },
+        {
+            "id": 21,
+            "nome": "\ud83c\udf62 Espinafre"
+        },
+        {
+            "id": 22,
+            "nome": "\ud83c\udf5a Alface"
+        },
+        {
+            "id": 23,
+            "nome": "\ud83c\udf5f Cenoura"
+        },
+        {
+            "id": 24,
+            "nome": "\ud83c\udf61 Abobrinha"
+        },
+        {
+            "id": 25,
+            "nome": "\ud83c\udf51 Pepino"
+        },
+        {
+            "id": 26,
+            "nome": "\ud83c\udf58 Morango"
+        },
+        {
+            "id": 27,
+            "nome": "\ud83c\udf66 Uva"
+        },
+        {
+            "id": 28,
+            "nome": "\ud83c\udf69 Banana"
+        },
+        {
+            "id": 29,
+            "nome": "\ud83c\udf70 Laranja"
+        },
+        {
+            "id": 30,
+            "nome": "\ud83c\udf64 Maçã"
+        },
+        {
+            "id": 31,
+            "nome": "\ud83c\udf65 Pera"
+        },
+        {
+            "id": 32,
+            "nome": "\ud83c\udf6e Melancia"
+        },
+        {
+            "id": 33,
+            "nome": "\ud83c\udf6a Abacaxi"
+        },
+        {
+            "id": 34,
+            "nome": "\ud83c\udf6b Manga"
+        },
+        {
+            "id": 35,
+            "nome": "\ud83c\udf6c Kiwi"
+        },
+        {
+            "id": 36,
+            "nome": "\ud83c\udf6d Mamão"
+        },
+        {
+            "id": 37,
+            "nome": "\ud83c\udf55 Arroz"
+        },
+        {
+            "id": 38,
+            "nome": "\ud83c\udf54 Feijão"
+        },
+        {
+            "id": 39,
+            "nome": "\ud83c\udf50 Carne"
+        },
+        {
+            "id": 40,
+            "nome": "\ud83c\udf4d Frango"
+        },
+        {
+            "id": 41,
+            "nome": "\ud83c\udf49 Peixe"
+        },
+        {
+            "id": 42,
+            "nome": "\ud83c\udf56 Ovos"
+        },
+        {
+            "id": 43,
+            "nome": "\ud83c\udf4e Leite"
+        },
+        {
+            "id": 44,
+            "nome": "\ud83c\udf53 Queijo"
+        },
+        {
+            "id": 45,
+            "nome": "\ud83c\udf5c Pão"
+        },
+        {
+            "id": 46,
+            "nome": "\ud83c\udf5e Manteiga"
+        },
+        {
+            "id": 47,
+            "nome": "\ud83c\udf68 Iogurte"
+        },
+        {
+            "id": 48,
+            "nome": "\ud83c\udf67 Cereais"
+        },
+        {
+            "id": 49,
+            "nome": "\ud83c\udf57 Macarrão"
+        },
+        {
+            "id": 50,
+            "nome": "\ud83c\udf59 Pizza"
         }
-        // ... adicionar os outros itens de forma similar
     ]
 }
