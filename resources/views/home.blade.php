@@ -52,7 +52,7 @@
 
 
         @foreach($listas as $lista)
-            <x-card :title="$lista['nome']" :redirect-url="route('lista.show', $lista['id'])" btn-text="Acessar"/>
+            <x-card :title="$lista['nome']" class="border-gray-200 dark:border-gray-700" :redirect-url="route('lista.show', $lista['id'])" btn-text="Acessar"/>
         @endforeach
     </div>
 
