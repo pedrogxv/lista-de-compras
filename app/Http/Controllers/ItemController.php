@@ -2,53 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemRequest;
 use App\Models\Item;
-use Illuminate\Http\Request;
+use ProtoneMedia\Splade\Facades\Toast;
+use stdClass;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function store(ItemRequest $request)
     {
-        return Item::all();
-    }
+        $model = new Item();
+        $produto = new stdClass();
+        $produto->nome = $request->get('nome');
+        $model->insertData($produto);
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nome' => ['required'],
-            'valor' => ['required', 'numeric'],
-            'criada_em' => ['required', 'date'],
-            'atualizada_em' => ['required', 'date'],
-            'deletada' => ['required'],
-        ]);
+        Toast::success('Produto criada com sucesso!');
 
-        return Item::create($request->validated());
-    }
-
-    public function show(Item $item)
-    {
-        return $item;
-    }
-
-    public function update(Request $request, Item $item)
-    {
-        $request->validate([
-            'nome' => ['required'],
-            'valor' => ['required', 'numeric'],
-            'criada_em' => ['required', 'date'],
-            'atualizada_em' => ['required', 'date'],
-            'deletada' => ['required'],
-        ]);
-
-        $item->update($request->validated());
-
-        return $item;
-    }
-
-    public function destroy(Item $item)
-    {
-        $item->delete();
-
-        return response()->json();
+        return redirect(
+            route('home.index')
+        );
     }
 }
